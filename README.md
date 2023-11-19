@@ -1,6 +1,5 @@
-# exploratory-analysis-recipes
-Exploratory data analysis on recipe data &amp; subsequent reviews
-# Introduction
+# Recipes & Ratings Exploratory Data Analysis
+## Introduction
 ## Cleaning and EDA
-### Assessment of Missingness
-#### Hypothesis Testing
+## Assessment of Missingness
+## Hypothesis Testing
