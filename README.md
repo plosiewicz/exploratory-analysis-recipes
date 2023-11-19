@@ -40,7 +40,6 @@ Analysis done by Paul J. Losiewicz
 
 #### **EDA**
 #### **Univariate Analysis**
-
 For the univariate analysis section, I seek to explore the distribution of the number of recipes submitted per unique contributor.  In this visualization, I only include contributors who have submitted at-most 50 unique recipes to food.com.
 
 <iframe src="assets/univariate1.html" width=800 height=600 frameBorder=0></iframe>
@@ -52,8 +51,47 @@ This visualization shows the same quantitative information as the histogram abov
 <iframe src="assets/univariate3.html" width=800 height=600 frameBorder=0></iframe>
 My final univariate analysis displays the distribution of average-rating per unique contributor.  Essentially, I was looking to visualize how many contributors were averagely getting rated at any given score, and similarly to the visualizations above, this histogram is skewed heavily torwards average perfect scores of 5.0.  It's also probably important to recognize that contributors who have only submitted 1 recipe likely recieve less reviews, and as a result, makes it easier to score an averge score of 5.0.
 
+#### **Bivariate Analysis**
+To kick off bivariate analysis, we expand upon some of our visualizations earlier by looking at the relationship between the count of unique recipes published per contributor and the average rating across all recipes for the same respective contributor
 
+<iframe src="assets/bivariate3.html" width=800 height=600 frameBorder=0></iframe>
+This scatter-plot is meant to help visualize the relationship between the average rating and number of recipes submitted per contributor.  A trend here that is notable to point-out is that almost all contributors who have submitted >100 recipes rate, on average, in between 4 and 5 points.  Although we will conduct further tests on this obsevation later, it seems that contributors whom publish more-often almost always recieve reviews at a high-rate.
 
+<iframe src="assets/bivariate4.html" width=800 height=600 frameBorder=0></iframe>
+Another relationship which I found quite interesting to visualize was the correlation between the # of tags associated with a given recipe and the average score of such recipe.  In this visualization, I was wondering if a higher "accessibility" was causing recipes to be scored at higher rates.  By "accesibility" here, I mean that recipes with a greater number of tags can theoretically be discovered more easily by food.com users.  There does seem to be some type of positive relationship here as recipes with a high # of tags tend to score at a higher rate.
+
+#### **Interesting Aggregates**
+|   contributor_id |   num_recipes |   avg_rating |
+|-----------------:|--------------:|-------------:|
+|             1533 |             8 |      4.88889 |
+|             1535 |            34 |      4.34667 |
+|             1634 |             1 |      4.66667 |
+|             2129 |             1 |      4       |
+|             2312 |             1 |      5       |
+The interesting aggregate I decided to showcase was actually a DataFrame I featured and visualized heavily up to this point.  This table is indexed on to unique contributor_ids, and the 'num_recipes' features the # of unique recipes submitted by each given contributor while 'avg_rating' features the average rating score across all recipes for each respective contributor.  We are going to use this aggregated data to conduct our permutation tests later in the analysis.
 
 ### Assessment of Missingness
+#### **NMAR Analysis**
+It should be noted that the missingness in the 'rating' column could potentially be dependent on data not observable in our dataset; for example, unsatisfied reviewers may be less likely to leave a review rating at all due to frustration.  Another possible reason for the 'rating' column to be NMAR are user-demographics; I find it possible that less-experienced or older food.com users are tehcnologically challenged, and as a result, they forget to leave a rating.
+
+#### Missingness Dependency
+In this part of the analysis, we look to explore the dependency of the missingness in the 'rating' column with data values in other respective columns.
+> Rating and Preparation Time
+Our null hypothesis here is that the distribution of 'minutes' when 'rating' is missing comes from the same distribution of 'minutes' when 'rating' is not missing.  Our alternative hypothesis is that the distribution of 'minutes' when 'rating' is missing is different than the distribution of 'minutes' when 'rating' is present.  We do this by finding the observed absolute difference between 'minutes' when 'rating' is missing and 'minutes' when 'rating' is present.  We then continue by running a permutation test on the missing data, essentially shuffling the data around and simulating 1000 test-statistics as if the 'minutes' data came from the same distribution.  The visualization below depicts our results.
+<iframe src="assets/missing1.html" width=800 height=600 frameBorder=0></iframe>
+As you can see, with 1000 test-statistics we received a p-value of 0.118 which under a significance-level of 0.05, we reject our alternative hypothesis and keep our null-hypothesis that this 'minutes' data comes from the same distribution.  This supports that, in this context, the 'rating' data is MCAR.
+
+> Rating and # of Steps
+Here we explore whether the distribution of 'n_steps' differs depending on the missingness of the 'rating' column.  Our null-hypothesis and alternative hypothesis remain the same.  **Null**: the distribution of 'n_steps' remains the same whether or not 'rating' is missing.  **Alternative**: The distribution of 'n_steps' when 'rating' is missing is different from the distribution of 'n_steps' when 'rating' is present.  We use the same test-statistic here and proceed with the same steps to perform our permutation test.
+<iframe src="assets/missing2.html" width=800 height=600 frameBorder=0></iframe>
+As demonstrated by our visualization above, there are no values in our simulated test-statistics that are as extreme or more extreme than our observed test-statistic; as a result, we end-up with a p-value of 0.0 and we reject our null-hypothesis. The data supports that our 'rating' column is MAR since it depends on the values of the 'n_steps' column.
+
 ### Hypothesis Testing
+In our final section, we explore the question that we have been alluding to throughout this analysis in our EDA section: *do more experienced food.com contributors receive higher average rating scores than more amateur food.com users?*  For the framing of this question, we define *experienced* food.com users as those who have published >5 unique recipes, while we define amateur food.com users as those with less than 5 recipes. Below, we define our hypotheses: 
+**Null Hypothesis**: Contributors who have published more than 5 recipes rate on-average the same as contributors who have published less than 5 recipes.
+**Alternative Hypothesis**: Contributors who have published more than 5 recipes recieve higher average ratings than those with less than 5 published recipes.
+**Test-Statistic**: The difference in means of average-rating between users with at least 5 recipes published and less than 5 recipes published.
+*We will be conducting this test with a significance level of 0.05*
+In order to conduct this test, we use the same aggregated DataFrame that we displayed earlier, and we run a permutation test by shuffling the average ratings and finding the difference in means between the group greater than 5 recipes published and the group with less.  The visualization is displayed below: 
+<iframe src="assets/ht_plot.html" width=800 height=600 frameBorder=0></iframe>
+As seen by the empirical distribution of our simulated test-statistics, there are no simulated test-statistics under our null hypothesis in which there was a result as extreme or more extreme than our observed test-statistic.  This results in a p-value of 0.0.  Under these circumstances, we reject our null-hypothesis in favor of our alternative. The significance of these results lies in the reasons for which our data supported our alternative.  As displayed by our visualizations earlier, there are contributors on food.com with greater than 500 unique recipes published.  These contributors could potentially be large culinary compaines with tons of employees who constantly output these recipes, and our data supports that such contributors still favor quality while outputting quantity.
