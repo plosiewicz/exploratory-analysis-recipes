@@ -30,7 +30,13 @@ Analysis done by Paul J. Losiewicz
   > Cleaned DataFrame
   After completing the data-cleaning, below is the '.head()' of our resulting data-frame, only showing necessary columns for convenience.
 
-'|    | name                                 |   minutes |   contributor_id |   average_rating |   calories |   num_tags |\n|---:|:-------------------------------------|----------:|-----------------:|-----------------:|-----------:|-----------:|\n|  0 | 1 brownies in the world    best ever |        40 |           985201 |                4 |      138.4 |         14 |\n|  1 | 1 in canada chocolate chip cookies   |        45 |          1848091 |                5 |      595.1 |          9 |\n|  2 | 412 broccoli casserole               |        40 |            50969 |                5 |      194.8 |         10 |\n|  3 | 412 broccoli casserole               |        40 |            50969 |                5 |      194.8 |         10 |\n|  4 | 412 broccoli casserole               |        40 |            50969 |                5 |      194.8 |         10 |'
+'|    | name                                 |   minutes |   contributor_id |   average_rating |   calories |   num_tags |
+ |---:|:-------------------------------------|----------:|-----------------:|-----------------:|-----------:|-----------:|
+ |  0 | 1 brownies in the world    best ever |        40 |           985201 |                4 |      138.4 |         14 |
+ |  1 | 1 in canada chocolate chip cookies   |        45 |          1848091 |                5 |      595.1 |          9 |
+ |  2 | 412 broccoli casserole               |        40 |            50969 |                5 |      194.8 |         10 |
+ |  3 | 412 broccoli casserole               |        40 |            50969 |                5 |      194.8 |         10 |
+ |  4 | 412 broccoli casserole               |        40 |            50969 |                5 |      194.8 |         10 |'
 
 #### **EDA**
 
