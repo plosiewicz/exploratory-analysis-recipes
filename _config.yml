@@ -1,3 +1,5 @@
+gem "minima"
+gem "minima"
 theme: minima
 author:
   name: Paul J. Losiewicz
