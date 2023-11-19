@@ -40,6 +40,8 @@ Analysis done by Paul J. Losiewicz
 
 #### **EDA**
 
+<iframe src="assets/univariate1.html" width=800 height=600 frameBorder=0></iframe>
+
 #### Univariate Analysis
 
 
