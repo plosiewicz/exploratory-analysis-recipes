@@ -1,6 +1,1 @@
-gem "minima"
-$ bundle
 theme: minima
-author:
-  name: Paul J. Losiewicz
-  email: "plosiewi@ucsd.edu"
