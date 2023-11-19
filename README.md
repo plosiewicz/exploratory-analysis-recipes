@@ -39,20 +39,17 @@ Analysis done by Paul J. Losiewicz
 |  4 | 412 broccoli casserole               |        40 |            50969 |                5 |      194.8 |         10 |
 
 #### **EDA**
-#### Univariate Analysis
+#### **Univariate Analysis**
 
 For the univariate analysis section, I seek to explore the distribution of the number of recipes submitted per unique contributor.  In this visualization, I only include contributors who have submitted at-most 50 unique recipes to food.com.
 
 <iframe src="assets/univariate1.html" width=800 height=600 frameBorder=0></iframe>
-
 This visulization shows that an overwhelming majority of contributors on food.com have only submitted 1 recipe and to a larger degree <5 recipes.  Although it seems as if there are few contributos who have submitted ~50 recipes, it can be be demonstrated in the histogram below that there are still a significant number of contributors who have submitted >50 unique recipes.
 
 <iframe src="assets/univariate2.html" width=800 height=600 frameBorder=0></iframe>
-
 This visualization shows the same quantitative information as the histogram above; the only difference is the framing.  Here, I display only contributors with >=50 recipes submitted, and as you can see, there are still a significant # of contributors who have submitted a large number of recipes to food.com.  This histogram follows the same shape as the visualization only displaying <50 recipes, and I find it significant to observe that there exist users that have submitted as many as 500 to even 1000 recipes on food.com
 
 <iframe src="assets/univariate3.html" width=800 height=600 frameBorder=0></iframe>
-
 My final univariate analysis displays the distribution of average-rating per unique contributor.  Essentially, I was looking to visualize how many contributors were averagely getting rated at any given score, and similarly to the visualizations above, this histogram is skewed heavily torwards average perfect scores of 5.0.  It's also probably important to recognize that contributors who have only submitted 1 recipe likely recieve less reviews, and as a result, makes it easier to score an averge score of 5.0.
 
 
