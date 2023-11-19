@@ -1,4 +1,5 @@
 # Recipes & Ratings Exploratory Data Analysis
+Analysis done by Paul J. Losiewicz
 ## Introduction
 ## Cleaning and EDA
 ## Assessment of Missingness
