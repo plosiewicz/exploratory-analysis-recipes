@@ -61,6 +61,7 @@ This scatter-plot is meant to help visualize the relationship between the averag
 Another relationship which I found quite interesting to visualize was the correlation between the # of tags associated with a given recipe and the average score of such recipe.  In this visualization, I was wondering if a higher "accessibility" was causing recipes to be scored at higher rates.  By "accesibility" here, I mean that recipes with a greater number of tags can theoretically be discovered more easily by food.com users.  There does seem to be some type of positive relationship here as recipes with a high # of tags tend to score at a higher rate.
 
 #### **Interesting Aggregates**
+
 |   contributor_id |   num_recipes |   avg_rating |
 |-----------------:|--------------:|-------------:|
 |             1533 |             8 |      4.88889 |
@@ -68,6 +69,7 @@ Another relationship which I found quite interesting to visualize was the correl
 |             1634 |             1 |      4.66667 |
 |             2129 |             1 |      4       |
 |             2312 |             1 |      5       |
+
 The interesting aggregate I decided to showcase was actually a DataFrame I featured and visualized heavily up to this point.  This table is indexed on to unique contributor_ids, and the 'num_recipes' features the # of unique recipes submitted by each given contributor while 'avg_rating' features the average rating score across all recipes for each respective contributor.  We are going to use this aggregated data to conduct our permutation tests later in the analysis.
 
 ### Assessment of Missingness
